@@ -47,7 +47,6 @@ As required by the kata guidelines, here is a detailed account of how AI tools w
    - Used extensively throughout development
 
 2. **GitHub Copilot**
-   - Code completion and suggestions
    - Error resolution and debugging
 
 ### How I Used AI
@@ -59,10 +58,8 @@ As required by the kata guidelines, here is a detailed account of how AI tools w
 - Created user authentication flows and forms
 
 #### 🔧 Backend Development
-- **Claude** generated initial route structure for authentication and sweet management
-- Helped write controller logic for all endpoints
-- Assisted in implementing JWT authentication middleware
-- Created email verification and password reset logic using Nodemailer
+- **Claude** generated initial route structure for sweet management
+- Helped write controller logic for sweets endpoints.
 
 #### 🐛 Debugging & Error Resolution
 - **GitHub Copilot** provided real-time suggestions for fixing errors
@@ -354,44 +351,73 @@ Content-Type: application/json
 ## 📁 Project Structure
 
 ```
-sweet-shop-management/
+sweet-shop-management-system/
 ├── backend/
+│   ├── config/
+│   │   ├── mongodb.js
+│   │   └── nodeMailer.js
 │   ├── controllers/
-│   │   ├── authController.js
-│   │   └── sweetsController.js
+│   │   ├── auth.controller.js
+│   │   ├── sweets.controller.js
+│   │   └── user.controller.js
+│   ├── middleware/
+│   │   └── userAuth.middleware.js
 │   ├── models/
-│   │   ├── User.js
-│   │   └── Sweet.js
+│   │   ├── sweet.model.js
+│   │   └── user.model.js
 │   ├── routes/
 │   │   ├── authRoutes.js
 │   │   └── sweetRoutes.js
-│   ├── middleware/
-│   │   ├── userAuth.js
-│   │   ├── adminAuth.js
-│   │   └── errorHandler.js
-│   ├── config/
-│   │   ├── database.js
-│   │   └── email.js
-│   ├── utils/
-│   │   ├── mailer.js
-│   │   └── tokenGenerator.js
 │   ├── tests/
 │   │   ├── auth.test.js
 │   │   └── sweets.test.js
 │   ├── .env
-│   ├── server.js
-│   └── package.json
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── seed.js
+│   └── server.js
 ├── frontend/
+│   ├── dist/
+│   ├── node_modules/
+│   ├── public/
 │   ├── src/
 │   │   ├── components/
-│   │   ├── pages/
+│   │   │   ├── Auth/
+│   │   │   │   ├── Login.jsx
+│   │   │   │   └── Register.jsx
+│   │   │   ├── Layout/
+│   │   │   │   ├── Layout.jsx
+│   │   │   │   └── Navbar.jsx
+│   │   │   └── Sweets/
+│   │   │       ├── AddSweetForm.jsx
+│   │   │       ├── SearchBar.jsx
+│   │   │       ├── SweetCard.jsx
+│   │   │       └── SweetsList.jsx
 │   │   ├── context/
-│   │   ├── utils/
+│   │   │   └── AuthContext.jsx
+│   │   ├── pages/
+│   │   │   ├── AdminPanel.jsx
+│   │   │   ├── AuthPage.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Home.jsx
+│   │   │   └── NotFound.jsx
+│   │   ├── services/
+│   │   │   └── api.js
 │   │   ├── App.jsx
+│   │   ├── index.css
 │   │   └── main.jsx
-│   ├── public/
 │   ├── .env
-│   └── package.json
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── screenshots/
+│   ├── homepage.png
+│   └── registration.png
 └── README.md
 ```
 
@@ -414,39 +440,68 @@ This will generate a detailed coverage report showing test results for all modul
 
 ## 📸 Application Screenshots
 
-### Homepage - Browse Sweets
-![Homepage](./screenshots/homepage.png)
-*Browse through available sweets with search and filter options*
+### Homepage - Welcome to Sweet Shop
+![Homepage](https://github.com/itsriddhima3/sweet-shop-management-system/blob/d846b57d4a8b1e4d2a9cbc8b9190938fd62925ea/Homepage.png)
+*Vibrant landing page with gradient design welcoming users to browse premium candy*
+
+The homepage features:
+- Eye-catching orange-to-pink gradient background
+- Clear call-to-action "GET STARTED" button
+- Quick access to "Browse Sweets" and "LOGIN" options
+- Clean, modern UI with the Sweet Shop branding
 
 ### User Registration
-![Registration](./screenshots/registration.png)
-*Secure user registration with email verification*
+![Registration](https://github.com/itsriddhima3/sweet-shop-management-system/blob/d846b57d4a8b1e4d2a9cbc8b9190938fd62925ea/registration.png)
+*Secure registration form with comprehensive validation*
+
+The registration page includes:
+- Username, email, and password fields with validation
+- Password confirmation to prevent typos
+- Minimum 6 character password requirement
+- Terms & Conditions agreement checkbox
+- Easy toggle between Login and Register tabs
+- Link to login for existing users
 
 ### Sweet Details & Purchase
-![Sweet Details](./screenshots/sweet-details.png)
-*View sweet details and purchase with real-time quantity updates*
+![Sweet Details](https://github.com/itsriddhima3/sweet-shop-management-system/blob/d846b57d4a8b1e4d2a9cbc8b9190938fd62925ea/Sweet%20Details%20%26%20Purchase.png)
+*Browse and manage sweets with detailed product cards*
+
+The sweet browsing interface features:
+- Grid layout displaying all available sweets with product cards
+- Real-time stock status indicators (In Stock, Low Stock, Out of Stock)
+- Category badges (Chocolate, Gummy, etc.) for easy identification
+- Price and quantity information clearly displayed
+- Search bar with filter options for refined browsing
+- Edit and Delete buttons for quick management
+- Refresh button to update inventory in real-time
+- Clean card-based design showing sweet name, description, and stock levels
 
 ### Admin Dashboard
-![Admin Dashboard](./screenshots/admin-dashboard.png)
-*Admin interface for managing inventory and sweet listings*
+![Admin Dashboard](https://github.com/itsriddhima3/sweet-shop-management-system/blob/d846b57d4a8b1e4d2a9cbc8b9190938fd62925ea/Admin-dashboard.png)
+*Comprehensive admin control panel for inventory management*
 
-## 🚢 Deployment
+The admin dashboard includes:
+- **Inventory Tab**: Complete table view of all products with detailed information
+- Product thumbnails for visual identification
+- Organized columns: Product name, Category, Price, Quantity, Status, and Actions
+- Color-coded stock status badges:
+  - Green "In Stock" for adequate inventory (10+ items)
+  - Yellow "Low Stock" for items running low (2-3 items)
+  - Red "Out of Stock" for depleted inventory (0 items)
+- Quick action buttons for each product:
+  - **Edit**: Modify product details
+  - **Restock**: Increase inventory quantities
+  - **Delete**: Remove products from catalog
+- **Overview Tab**: Dashboard analytics and statistics
+- **Add Sweet Tab**: Form to add new products to the inventory
+- User profile dropdown in the navbar for account management
+- Purple gradient header with clear section description
 
-### Backend Deployment (Render/Railway)
-1. Create a new web service
-2. Connect your GitHub repository
-3. Set environment variables
-4. Deploy
-
-### Frontend Deployment (Vercel/Netlify)
-1. Import project from GitHub
-2. Set build command: `npm run build`
-3. Set output directory: `dist`
-4. Add environment variable: `VITE_API_URL`
-5. Deploy
-
-### Live Application
-🌐 **[View Live Demo](#)** *(Add your deployment link here)*
+### Additional Features
+- **Email Verification:** OTP-based verification after registration
+- **Sweet Browsing:** Search and filter sweets by name, category, and price
+- **Purchase System:** Real-time quantity updates and transaction processing
+- **Admin Dashboard:** Complete inventory management interface for administrators
 
 ## 🔒 Security Features
 
@@ -481,14 +536,10 @@ Manually added custom error handling.
 Co-authored-by: Claude <ai@anthropic.com>"
 ```
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: itsriddhima3
+- GitHub: @itsriddhima3
 - Email: riddhima3007@gmail.com
 
 ## 🙏 Acknowledgments
@@ -501,3 +552,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Built with ❤️ and AI assistance**
+
+ 
+
+
+ 
+   
+
+
