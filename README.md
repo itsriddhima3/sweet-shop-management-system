@@ -463,7 +463,7 @@ The registration page includes:
 - Link to login for existing users
 
 ### Sweet Details & Purchase
-![Sweet Details](https://github.com/itsriddhima3/sweet-shop-management-system/blob/d846b57d4a8b1e4d2a9cbc8b9190938fd62925ea/Sweet%20Details%20%26%20Purchase.png)
+![Sweet Details](https://github.com/itsriddhima3/sweet-shop-management-system/blob/e643b50667bf2180757b3ce7c03735211569ad5c/sweet-details.png)
 *Browse and manage sweets with detailed product cards*
 
 The sweet browsing interface features:
